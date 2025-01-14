@@ -21,7 +21,7 @@ $installerPath = "$installerDir\$installerName"
 Write-Host "[DL] Checking if installer Directory Exists"
 if (!(Test-Path -Path "$installerDir" -PathType Container)) {
     Write-Host "[DL] No - creating..."
-    New-Item -Path "$installerDir" -PathType Directory | Out-Null
+    New-Item -Path "$installerDir" -ItemType Directory | Out-Null
 } else {
     Write-Host "[DL] Yes - proceeding..."
 }
