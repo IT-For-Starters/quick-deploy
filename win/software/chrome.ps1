@@ -19,7 +19,7 @@ $installerDir = "$scriptLocation\files";
 $installerPath = "$installerDir\$installerName"
 
 Write-Host "[DL] Checking if installer Directory Exists"
-if (!Test-Path -Path "$installerDir" -PathType Container) {
+if (!(Test-Path -Path "$installerDir" -PathType Container)) {
     Write-Host "[DL] No - creating..."
     New-Item -Path "$installerDir" -PathType Directory | Out-Null
 } else {
@@ -27,7 +27,7 @@ if (!Test-Path -Path "$installerDir" -PathType Container) {
 }
 
 Write-Host "[DL] Checking if installer exists already"
-if (!Test-Path -Path "$installerPath" -PathType Leaf) {
+if (!(Test-Path -Path "$installerPath" -PathType Leaf)) {
     Write-Host "[DL] No - downloading..."
     Invoke-WebRequest -Uri $installerUrl -OutFile $installerPath
 } else {
