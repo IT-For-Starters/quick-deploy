@@ -1,11 +1,11 @@
 
 #### Changable Variables!
-$scriptLocation = "C:\temp\quick-deploy\software\chrome"
+$scriptLocation = "C:\temp\quick-deploy\software\firefox"
 
-$installerUrl = "https://dl.google.com/chrome/install/latest/chrome_installer.exe";
-$installerName = "chrome_installer.exe";
+$installerUrl = "https://download.mozilla.org/?product=firefox-latest&os=win64&lang=en-US";
+$installerName = "ff_installer.exe";
 
-$installerArguments = "/silent /install";
+$installerArguments = "-ms";
 $installMSI = $false;
 
 
