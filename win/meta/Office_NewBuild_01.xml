@@ -1,0 +1,21 @@
+<Configuration ID="4de68944-567f-485e-9ffb-d9f10b767294">
+  <Add OfficeClientEdition="64" Channel="Current">
+    <Product ID="O365BusinessRetail">
+      <Language ID="en-gb" />
+      <ExcludeApp ID="Groove" />
+      <ExcludeApp ID="Lync" />
+    </Product>
+  </Add>
+  <Property Name="SharedComputerLicensing" Value="0" />
+  <Property Name="FORCEAPPSHUTDOWN" Value="FALSE" />
+  <Property Name="DeviceBasedLicensing" Value="0" />
+  <Property Name="SCLCacheOverride" Value="0" />
+  <Property Name="TenantId" Value="03cd4379-fb69-4d46-bbe2-9b9545fa221f" />
+  <Updates Enabled="TRUE" />
+  <AppSettings>
+    <User Key="software\microsoft\office\16.0\excel\options" Name="defaultformat" Value="51" Type="REG_DWORD" App="excel16" Id="L_SaveExcelfilesas" />
+    <User Key="software\microsoft\office\16.0\powerpoint\options" Name="defaultformat" Value="27" Type="REG_DWORD" App="ppt16" Id="L_SavePowerPointfilesas" />
+    <User Key="software\microsoft\office\16.0\word\options" Name="defaultformat" Value="" Type="REG_SZ" App="word16" Id="L_SaveWordfilesas" />
+  </AppSettings>
+  <Display Level="None" AcceptEULA="TRUE" />
+</Configuration>
