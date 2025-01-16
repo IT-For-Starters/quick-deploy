@@ -119,6 +119,7 @@ if ($installProcess.ExitCode -eq 0) {
 else {
     # Installation failed
     Write-Error "[INSDL] Installation Failed"
+    Set-Location "C:\temp"
     Remove-Item -Path $installerDir -Recurse -Force -Confirm:$false
     Stop-Transcript
     exit 1
@@ -138,6 +139,7 @@ if ($installProcess.ExitCode -eq 0) {
 else {
     # Installation failed
     Write-Error "[INSSW] Installation Failed"
+    Set-Location "C:\temp"
     Remove-Item -Path $installerDir -Recurse -Force -Confirm:$false
     Stop-Transcript
     exit 1
