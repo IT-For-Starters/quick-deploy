@@ -136,6 +136,9 @@ else {
     Stop-Transcript
     exit 1
 }
-Remove-Item -Path $installerDir -Recurse -Force -Confirm:$false
 Stop-Transcript
+
+Start-Sleep -Seconds 10
+Remove-Item -Path $installerDir -Recurse -Force -Confirm:$false
+
 exit 0
