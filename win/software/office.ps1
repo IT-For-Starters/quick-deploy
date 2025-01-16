@@ -23,7 +23,8 @@ Write-Host "[DL] Checking if installer Directory Exists"
 if (!(Test-Path -Path "$installerDir" -PathType Container)) {
     Write-Host "[DL] No - creating..."
     New-Item -Path "$installerDir" -ItemType Directory | Out-Null
-} else {
+}
+else {
     Write-Host "[DL] Yes - proceeding..."
 }
 
@@ -31,7 +32,8 @@ Write-Host "[DL] Checking if installer Temp Directory Exists"
 if (!(Test-Path -Path "$installerTempPath" -PathType Container)) {
     Write-Host "[DL] No - creating..."
     New-Item -Path "$installerTempPath" -ItemType Directory | Out-Null
-} else {
+}
+else {
     Write-Host "[DL] Yes - proceeding..."
 }
 
@@ -43,13 +45,15 @@ if (!(Test-Path -Path "$installerPath" -PathType Leaf)) {
     try {
         Start-BitsTransfer -Source $installerUrl -Destination $installerPath
         #$webClient.DownloadFile($installerUrl, $installerPath)
-    } catch {
+    }
+    catch {
         Write-Host "Error message: $($_.Exception.Message)"
         Write-Host "Stack trace: $($_.Exception.StackTrace)"
         Write-Host "Inner Exception: $($_.Exception.InnerException)"
     }
     
-} else {
+}
+else {
     Write-Host "[DL] Yes - proceeding..."
 }
 
@@ -61,7 +65,8 @@ if (!(Test-Path -Path "$configPath" -PathType Leaf)) {
     Write-Host "[CONF] No - downloading..."
     Start-BitsTransfer -Source $configUrl -Destination $configPath
     #$webClient.DownloadFile($configUrl, $configPath)
-} else {
+}
+else {
     Write-Host "[CONF] Yes - proceeding..."
 }
 
@@ -73,10 +78,11 @@ Write-Host "[INS1] Running Installer to get ODT"
 $installerArguments = "/extract:`"$installerTempPath`" /log:`"$installerTempPath\OfficeInstall.log`" /quiet /norestart"
 try {
     $installProcess = Start-Process -FilePath "$installerPath" -ArgumentList $installerArguments -Wait -PassThru
-} catch {
+}
+catch {
     Write-Host "Error message: $($_.Exception.Message)"
-        Write-Host "Stack trace: $($_.Exception.StackTrace)"
-        Write-Host "Inner Exception: $($_.Exception.InnerException)"
+    Write-Host "Stack trace: $($_.Exception.StackTrace)"
+    Write-Host "Inner Exception: $($_.Exception.InnerException)"
 }
 
 
@@ -139,6 +145,8 @@ else {
 Stop-Transcript
 
 Start-Sleep -Seconds 10
+
+Remove-Item -Path $installerTempPath -Recurse -Force -Confirm:$false
 Remove-Item -Path $installerDir -Recurse -Force -Confirm:$false
 
 exit 0

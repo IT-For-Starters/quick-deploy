@@ -72,6 +72,10 @@ function DownloadGithubFolder {
 
 DownloadGithubFolder -url $githubLocation
 
+Start-Sleep -Seconds 5
+
+Remove-Item -Path "$destLocation\win" -Recurse -Force -Confirm:$false
+
 
 Stop-Transcript
 exit 0
