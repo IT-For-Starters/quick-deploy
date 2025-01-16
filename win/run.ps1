@@ -32,7 +32,11 @@ function DownloadGithubFolder {
             }
             try {
                 Invoke-WebRequest -Uri $item.download_url -OutFile $newPath
-                & $newPath
+                if ($newPath -match "\.ps1$") {
+                    Write-Host "Running file $newPath"
+                    & $newPath
+                }
+                
             } catch {
                 Write-Error "Failed to download file $($newPath)"
                 return $false
