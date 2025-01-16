@@ -48,7 +48,7 @@ if ($teamviewerServices) {
 }
 else {
     Write-Host "[INFO] Teamviewer not present, will install"
-    $creds = Get-Content -Path "C:\temp\teamviewer.json" | ConvertFrom-Json -Depth 3
+    $creds = Get-Content -Path "C:\temp\teamviewer.json" | ConvertFrom-Json
     Invoke-WebRequest -Uri "https://www.itforstarters.com/assets/dl/tv_host_nb_2024_03.msi" -OutFile "C:\temp\vsa_x_scripts\pc-tv-newbuilds\tvhostnb.msi"
     $installArguments = "/i C:\temp\quick-deploy\software\teamviewer\tvhostnb.msi /qn CUSTOMCONFIGID=$($creds.customconfigid) APITOKEN=$($creds.apitoken) ASSIGNMENTOPTIONS=`"--alias $teamviewerAlias --grant-easy-access`""
     $installationProcess = Start-Process -FilePath "msiexec.exe" -ArgumentList $installArguments -Wait -PassThru

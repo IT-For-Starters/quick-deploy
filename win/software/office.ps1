@@ -142,6 +142,8 @@ else {
     Stop-Transcript
     exit 1
 }
+
+Set-Location "C:\temp"
 Stop-Transcript
 
 Start-Sleep -Seconds 10
