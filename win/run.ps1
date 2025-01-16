@@ -32,7 +32,7 @@ function DownloadGithubFolder {
             }
             try {
                 Invoke-WebRequest -Uri $item.download_url -OutFile $newPath
-                if ($newPath -match "\.ps1$") {
+                if ([System.IO.Path]::GetExtension($newPath) -eq ".ps1") {
                     Write-Host "Running file $newPath"
                     & $newPath
                 }
