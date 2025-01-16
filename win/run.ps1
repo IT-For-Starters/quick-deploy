@@ -8,6 +8,7 @@ $Headers = @{
 
 
 $destLocation = "C:\temp\quick-deploy\scripts_to_run"
+Start-Transcript -Path "$destLocation\LOG_$timestamp.txt"
 
 function DownloadGithubFolder {
     param (
@@ -63,11 +64,14 @@ function DownloadGithubFolder {
         }
     }
 
+    return $true;
+
     
 
 }
 
 DownloadGithubFolder -url $githubLocation
 
-#Stop-Transcript
+
+Stop-Transcript
 exit 0
