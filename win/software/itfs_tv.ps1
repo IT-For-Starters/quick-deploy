@@ -1,5 +1,5 @@
 $timestamp = Get-Date -Format "yyyy-MM-dd HH-mm"
-Start-Transcript -Path "C:\temp\quick-deploy\software\teamviewer\$timestamp log.txt"
+Start-Transcript -Path "C:\temp\quick-deploy\software\teamviewer\LOG_$timestamp.txt"
 
 $serialnumber = (Get-CimInstance -ClassName Win32_BIOS).SerialNumber
 $pcname = $env:COMPUTERNAME
@@ -49,7 +49,7 @@ if ($teamviewerServices) {
 else {
     Write-Host "[INFO] Teamviewer not present, will install"
     $creds = Get-Content -Path "C:\temp\teamviewer.json" | ConvertFrom-Json
-    Invoke-WebRequest -Uri "https://www.itforstarters.com/assets/dl/tv_host_nb_2024_03.msi" -OutFile "C:\temp\vsa_x_scripts\pc-tv-newbuilds\tvhostnb.msi"
+    Invoke-WebRequest -Uri "https://www.itforstarters.com/assets/dl/tv_host_nb_2024_03.msi" -OutFile "C:\temp\quick-deploy\software\teamviewer\tvhostnb.msi"
     $installArguments = "/i C:\temp\quick-deploy\software\teamviewer\tvhostnb.msi /qn CUSTOMCONFIGID=$($creds.customconfigid) APITOKEN=$($creds.apitoken) ASSIGNMENTOPTIONS=`"--alias $teamviewerAlias --grant-easy-access`""
     $installationProcess = Start-Process -FilePath "msiexec.exe" -ArgumentList $installArguments -Wait -PassThru
     
