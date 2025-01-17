@@ -85,6 +85,8 @@ if ($installType -eq "DELL") {
 }
 
 if ($installType -eq "LENOVO") {
+    Set-Location -Path $installerDir
+
     #### Step 1 - Download Installer ZIP
     $installerPath = "$installerDir\$LENOVOzipName"
 
@@ -109,6 +111,8 @@ if ($installType -eq "LENOVO") {
         Write-Host "[LENOVO] Running Installer Script"
         & "$installerDir\lenovo-commercial-vantage-install.ps1"
     }
+
+    Set-Location -Path "C:\temp"
 
     
 }
